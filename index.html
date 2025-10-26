@@ -853,51 +853,80 @@
             }
         }
 
-        /* ===== CNPJ INFO DISPLAY ===== */
+        /* ===== CNPJ INFO DISPLAY - Aprimorado para Profissionalismo ===== */
         .cnpj-info-display {
-            background: var(--success-light);
-            border: 1px solid var(--success-color);
+            background: var(--gray-50); /* Fundo mais neutro e profissional */
+            border: 1px solid var(--gray-300); /* Borda sutil */
             border-radius: var(--border-radius-lg);
-            padding: 20px;
+            padding: 24px;
             margin: 24px 0;
+            box-shadow: var(--shadow-sm);
         }
 
         .cnpj-info-display h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--success-color);
-            margin-bottom: 12px;
+            font-size: 18px; /* Título mais proeminente */
+            font-weight: 700;
+            color: var(--gray-900); /* Cor de texto padrão para formalidade */
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color); /* Linha de destaque */
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .cnpj-info-display h3 i {
+            color: var(--primary-color); /* Ícone com a cor primária */
+            font-size: 20px;
         }
 
         .cnpj-info-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 16px 24px; /* Aumentar o espaçamento */
         }
 
         @media (min-width: 640px) {
             .cnpj-info-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Layout mais flexível */
             }
         }
 
         .cnpj-info-item {
-            font-size: 13px;
+            font-size: 14px; /* Fonte um pouco maior para melhor legibilidade */
             color: var(--gray-700);
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--gray-200); /* Separador sutil */
         }
 
         .cnpj-info-label {
             font-weight: 600;
             color: var(--gray-900);
-            display: block;
-            margin-bottom: 2px;
+            display: inline-block; /* Alinhamento lado a lado */
+            margin-right: 8px;
+            min-width: 120px; /* Largura mínima para alinhamento */
         }
 
         .cnpj-info-value {
             color: var(--gray-700);
+            font-weight: 500;
+        }
+        
+        /* Adicionando um estilo para a linha de separação no grid */
+        .cnpj-info-grid .cnpj-info-item:last-child {
+            border-bottom: none;
+        }
+        
+        @media (min-width: 640px) {
+            .cnpj-info-grid .cnpj-info-item {
+                border-bottom: none; /* Remover a borda no grid de 2 colunas */
+            }
+        }
+        
+        /* Novo estilo para destacar dados importantes, se necessário */
+        .cnpj-info-value.highlight {
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
         /* ===== WAITING PAYMENT ===== */
@@ -1016,11 +1045,15 @@
                             <!-- Seção de Informações do CNPJ -->
                             <div class="cnpj-info-display" id="cnpjInfoDisplay" style="display: none;">
                                 <h3>
-                                    <i class="fas fa-check-circle"></i>
-                                    Dados da Empresa
+                                    <i class="fas fa-building"></i>
+                                    Informações Cadastrais da Empresa
                                 </h3>
                                 <div class="cnpj-info-grid" id="cnpjInfoGrid">
-                                    <!-- Dados serão preenchidos dinamicamente -->
+                                    <!-- CNPJ info items will be injected here -->
+                                </div>
+                                <div class="waiting-payment-subtle" style="margin-top: 24px;">
+                                    <i class="fas fa-info-circle" style="color: var(--primary-color);"></i>
+                                    <span style="font-weight: 600;">Validação de Dados:</span> As informações acima foram obtidas diretamente da Receita Federal.
                                 </div>
                             </div>
 
